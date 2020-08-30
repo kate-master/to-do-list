@@ -1,4 +1,4 @@
-<div class='task-row'>
+<div class='task-row' id="task-row-<%= task.id %>">
     <% if task.complete == true %>
       <div class='task-complete' id="task-complete-<%= task.id %>">
         <%= link_to task_path(task, task: { complete: false }), remote: true, method: :put do %>
