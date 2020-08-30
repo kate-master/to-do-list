@@ -1,0 +1,23 @@
+<div class='title'>
+  <h1>SIMPLE TODO LISTS</h1>
+  <h4>FROM RUBY GARAGE</h4>
+</div>
+<div id='flash'>
+  <%= render "shared/flash" %>
+</div>
+<div class='project-list'>
+   <%= render @projects %>
+</div>
+<div class='center' id='project-new-link'>
+  <div id='project-new-button'>
+    <%= link_to new_project_path, remote: true do %>
+      <button class='btn btn-primary btn-lg'>
+        <i class='glyphicon glyphicon-plus black-text plus-black' aria-hidden="true"></i>
+        <span>&nbsp;Add TODO List</span>
+      </button>
+    <% end %>
+  </div>
+</div>
+<p class='center'>
+  © Ruby Garage
+</p>

@@ -1,0 +1,39 @@
+<div class='task-row'>
+    <% if task.complete == true %>
+      <div class='task-complete' id="task-complete-<%= task.id %>">
+        <%= link_to task_path(task, task: { complete: false }), remote: true, method: :put do %>
+          <i class='glyphicon glyphicon-check' aria-hidden="true"></i>
+        <% end %>
+      </div>
+      <div class='empty-div'></div>
+      <div class='task-content task-complete-text' id="task-content-<%= task.id %>">
+        <%= task.text %>
+      </div>
+    <% else %>
+      <div class='task-complete' id="task-complete-<%= task.id %>">
+        <%= link_to task_path(task, task: { complete: true }), remote: true, method: :put do %>
+          <i class='glyphicon glyphicon-unchecked' aria-hidden="true"></i>
+        <% end %>
+      </div>
+      <div class='empty-div'></div>
+      <div class='task-content' id="task-content-<%= task.id %>">
+        <%= task.text %>
+      </div>
+    <% end %>
+  <div class='deadline'>
+    <span>
+      <%= task.deadline.strftime('%m/%d/%y') if task.deadline.present? %>
+    </span>
+  </div>
+  <div class='tasks-links' id="task-links-<%= task.id %>">
+    <div class='arrows'>
+      <%= link_to ' ', task_path(task, move_higher: true), remote: true, method: :put, class: 'glyphicon glyphicon-arrow-up task-link' %>
+      &nbsp;
+      <%= link_to ' ', task_path(task, move_lower: true), remote: true, method: :put, class: 'glyphicon glyphicon-arrow-down task-link' %>
+    </div>
+    <span class='tasks-links-separator'>|</span>
+    <%= link_to ' ', task, remote: true, method: :delete, class: 'glyphicon glyphicon-trash task-link' %>
+    <span class='tasks-links-separator'>|</span>
+    <%= link_to ' ', edit_task_path(task), remote: true, class: 'glyphicon glyphicon-pencil task-link' %>
+  </div>
+</div>

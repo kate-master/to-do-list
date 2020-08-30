@@ -1,0 +1,25 @@
+<div id="project-<%= project.id %>">
+  <div class='project-row' id="project-row-<%= project.id %>">
+    <i class='glyphicon glyphicon-calendar project-calendar'></i>
+    <div class='project-name' id="project-name-<%= project.id %>">
+      <%= project.title %>
+    </div>
+    <div id="project-links-<%= project.id %>">
+      <%= link_to ' ', edit_project_path(project), remote: true, class: 'glyphicon glyphicon-pencil project-edit' %>
+      <span class='project-links-separate'>|</span>
+      <%= link_to ' ', project, remote: true, method: :delete, class: 'glyphicon glyphicon-trash project-delete' %>
+    </div>
+  </div>
+  <div class='task-form'>
+    <i class='glyphicon glyphicon-plus plus-green' aria-hidden="true"></i>
+    <%= form_for([project, Task.new], remote: true) do |form| %>
+      <%= form.text_field :text, placeholder: 'Start typing here to create a task...', class: 'task-form-field' %>
+      <%= form.submit 'Add Task', class: 'btn btn-success' %>
+    <% end %>
+  </div>
+  <div class='task-list' id="task-list-<%= project.id %>">
+    <% project.tasks.each do |task| %>
+      <%= render 'tasks/task', task: task %>
+    <% end %>
+  </div>
+</div>

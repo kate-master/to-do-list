@@ -1,0 +1,7 @@
+<div class='project-form'>
+  <%= form_for @project, remote: true do |form| %>
+    <%= form.label :title, class:'black-text' %>
+    <%= form.text_field :title %>
+    <%= form.submit 'Accept', class: 'btn btn-success' %>
+  <% end %>
+</div>

@@ -1,0 +1,4 @@
+$('#task-complete-icon-<%= @task.id %>').hide();
+$('#task-links-<%= @task.id %>').hide();
+$('#task-complete-<%= @task.id %>').hide();
+$('#task-content-<%= @task.id %>').replaceWith('<%= j render 'form', task: @task %>');

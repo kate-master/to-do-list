@@ -1,0 +1,8 @@
+<div class='task-form-edit'>
+  <%= form_for(task, remote: true) do |form| %>
+    <%= form.label :text %>
+    <%= form.text_field :text %>
+    <%= form.date_field :deadline %>
+    <%= form.submit 'Edit', class: 'btn btn-success' %>
+  <% end %>
+</div>
